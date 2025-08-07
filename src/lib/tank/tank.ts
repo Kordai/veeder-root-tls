@@ -62,6 +62,12 @@ export class Tank {
   readonly temperature: number;
 
   /**
+   * Temperatura no tanque.
+   * @readonly
+   */
+  readonly density: number;
+
+  /**
    * Volume de água no tanque.
    * @readonly
    */
@@ -78,6 +84,7 @@ export class Tank {
     height: number,
     water: number,
     temperature: number,
+    density: number,
     waterVolume: number
   ) {
     this.id = id;
@@ -90,6 +97,7 @@ export class Tank {
     this.height = height;
     this.water = water;
     this.temperature = temperature;
+    this.density = density;
     this.waterVolume = waterVolume;
   }
 
@@ -120,6 +128,7 @@ export class Tank {
     const water = parts[4].readFloatBE();
     const temperature = parts[5].readFloatBE();
     const waterVolume = parts[6].readFloatBE();
+    const density = parts[7].readFloatBE();
 
     return new Tank(
       tankNumber,
@@ -132,6 +141,7 @@ export class Tank {
       height,
       water,
       temperature,
+      density,
       waterVolume
     );
   }
